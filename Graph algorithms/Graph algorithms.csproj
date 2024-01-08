@@ -6,17 +6,61 @@
     <RootNamespace>Graph_algorithms</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets\network.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Saves\" />
-    <Folder Include="Styles\" />
-    <Folder Include="ViewModels\" />
+    <None Remove="Assets\Arrow.png" />
+    <None Remove="Assets\Circle_btn.png" />
+    <None Remove="Assets\Close_btn.png" />
+    <None Remove="Assets\eraser.png" />
+    <None Remove="Assets\floppy-disk.png" />
+    <None Remove="Assets\layer.png" />
+    <None Remove="Assets\network.png" />
+    <None Remove="Assets\open-folder.png" />
+    <None Remove="Assets\Plus_btn.png" />
+    <None Remove="Assets\queue.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\network.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Circle_btn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Close_btn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\eraser.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\floppy-disk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\layer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\network.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\open-folder.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Plus_btn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\queue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Arrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
