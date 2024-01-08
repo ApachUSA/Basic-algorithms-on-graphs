@@ -1,0 +1,313 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:i="http://schemas.microsoft.com/xaml/behaviors">
+    <Style x:Key="Icon_btn" TargetType="Button">
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Border BorderThickness="0" CornerRadius="10"
+                            Name="back" Background="#FF323232"
+                            >
+
+                        <Image Width="20" Height="20" Name="img"
+                            Source="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="back" 
+                                    Value="Green"/>
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Width" TargetName="img" 
+                                    Value="20"/>
+                            <Setter Property="Height" TargetName="img" 
+                                    Value="20"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+
+
+            </Setter.Value>
+
+
+        </Setter>
+
+
+    </Style>
+
+    <Style x:Key="Icon_btn_S" TargetType="Button">
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Border BorderThickness="0" CornerRadius="10"
+                            Name="back" Background="Transparent"
+                            >
+
+                        <Image Width="10" Height="10" Name="img" RenderOptions.BitmapScalingMode="Fant"
+                            Source="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="back" 
+                                    Value="gray"/>
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Width" TargetName="img" 
+                                    Value="20"/>
+                            <Setter Property="Height" TargetName="img" 
+                                    Value="20"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+
+
+            </Setter.Value>
+
+
+        </Setter>
+
+
+    </Style>
+
+    <Style x:Key="Stack_Items" TargetType="ListViewItem">
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="ListViewItem">
+
+                    <Border Margin="0,5,0,0" Name="main_bord" CornerRadius="5" Height="35"
+                                                Background="Transparent">
+
+                        <Grid Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border Background="#76b9ed" Name="check_bord" Height="20" Width="3"
+                                                        CornerRadius="0,3,3,0" HorizontalAlignment="Left"
+                                                        Visibility="Hidden"/>
+
+                            <Image Width="15" Height="15"  Grid.Column="1"
+                                   Source="/Assets/layer.png"
+                                   Margin="8,0,0,0" RenderOptions.BitmapScalingMode="Fant"/>
+
+                            <TextBlock  Grid.Column="2" Margin="15,0,0,0" Text="{Binding}"
+                                        Foreground="White" VerticalAlignment="Center" FontSize="{Binding Path=FontSize, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="main_bord" Value="#FF323232"/>
+                        </Trigger>
+
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="Queue_Items" TargetType="ListViewItem">
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="ListViewItem">
+
+                    <Border Margin="0,5,0,0" Name="main_bord" CornerRadius="5" Height="35"
+                                                Background="Transparent">
+
+                        <Grid Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border Background="#76b9ed" Name="check_bord" Height="20" Width="3"
+                                                        CornerRadius="0,3,3,0" HorizontalAlignment="Left"
+                                                        Visibility="Hidden"/>
+
+                            <Image Width="15" Height="15"  Grid.Column="1"
+                                   Source="/Assets/queue.png"
+                                   Margin="8,0,0,0" RenderOptions.BitmapScalingMode="Fant"/>
+
+                            <TextBlock  Grid.Column="2" Margin="15,0,0,0" Text="{Binding}"
+                                        Foreground="White" VerticalAlignment="Center" FontSize="{Binding Path=FontSize, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="main_bord" Value="#FF323232"/>
+                        </Trigger>
+
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="list_items" TargetType="ListViewItem">
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="ListViewItem">
+
+                    <Border Margin="0,5,0,0" Name="main_bord" CornerRadius="5" Height="35"
+                                                Background="Transparent">
+
+                        <Grid Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border Background="#76b9ed" Name="check_bord" Height="20" Width="3"
+                                                        CornerRadius="0,3,3,0" HorizontalAlignment="Left"
+                                                        Visibility="Hidden"/>
+
+                            <Image Width="15" Height="15"  Grid.Column="1"
+                                   Source="/Assets/Circle_btn.png"
+                                   Margin="8,0,0,0" RenderOptions.BitmapScalingMode="Fant"/>
+
+                            <TextBlock  Grid.Column="2" Margin="15,0,0,0" Text="{Binding Id}"
+                                        Foreground="White" VerticalAlignment="Center"/>
+                            <Button Style="{DynamicResource Icon_btn_S}" Tag="/Assets/Close_btn.png"
+                                    Grid.Column="3" Margin="3" Command="{Binding Path=DataContext.DeleteVertex, 
+                                    RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                                    CommandParameter="{Binding}"/>
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="main_bord" Value="#FF323232"/>
+                        </Trigger>
+
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="list_items_E" TargetType="ListViewItem">
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="ListViewItem">
+
+                    <Border Margin="0,5,0,0" Name="main_bord" CornerRadius="5" Height="35"
+                                                Background="Transparent">
+
+                        <Grid Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border Background="#76b9ed" Name="check_bord" Height="20" Width="3"
+                                                        CornerRadius="0,3,3,0" HorizontalAlignment="Left"
+                                                        Visibility="Hidden"/>
+
+                            <Image Width="15" Height="15"  Grid.Column="1"
+                                   Source="/Assets/Arrow.png"
+                                   Margin="8,0,0,0" RenderOptions.BitmapScalingMode="Fant"/>
+
+                            <TextBlock  Grid.Column="2" Margin="15,0,0,0"
+                                        Foreground="White" VerticalAlignment="Center">
+                                <Run Text="{Binding From.Id}"/>
+                                <Run Text=" ---&gt; "/>
+                                <Run Text="{Binding To.Id}"/>
+                            </TextBlock>
+
+                            <TextBlock  Grid.Column="3" Margin="5,0,0,0"
+                                        Foreground="White" VerticalAlignment="Center">
+                                <Run Text="W = "/>
+                                <TextBox Background="Green" CaretBrush="White"
+                                 Foreground="White" BorderThickness="0"
+                                 Text="{Binding Capacity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                 />
+                            </TextBlock>
+
+                            <Button Style="{DynamicResource Icon_btn_S}" Tag="/Assets/Close_btn.png"
+                                    Grid.Column="4" Margin="3" Command="{Binding Path=DataContext.DeleteEdge, 
+                                    RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                                    CommandParameter="{Binding}"/>
+
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="main_bord" Value="#FF323232"/>
+                        </Trigger>
+
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+    </Style>
+
+</ResourceDictionary>
