@@ -3,10 +3,621 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Graph_algorithms"
+        xmlns:local="clr-namespace:Graph_algorithms.ViewModels" 
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Graph algorithms" Height="800" Width="1700"
+        WindowStartupLocation="CenterScreen" Icon="/Assets/network.png">
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
+
+    <Grid Background="#FF1D1D1D">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="750"/>
+        </Grid.ColumnDefinitions>
+
+        <!--RightPanel-->
+
+        <Grid Grid.Column="1" >
+
+
+            <Grid  Background="#FF1D1D1D" Height="auto">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="250"/>
+                </Grid.ColumnDefinitions>
+
+                <Border>
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <Button Style="{DynamicResource Icon_btn}" Margin="2"
+ Command="{Binding Save}" 
+ Grid.Row="1"
+Tag="/Assets/floppy-disk.png"
+ />
+                            <Button Grid.Column="1" Style="{DynamicResource Icon_btn}" Margin="2"
+ Command="{Binding ReadFile}" Grid.Row="1"
+Tag="/Assets/open-folder.png"
+ />
+
+
+                        </Grid>
+
+                        <Border CornerRadius="15" Background="#FF232323" Margin="10" Grid.Row="1">
+                            <!--Nodes-->
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="Nodes" Foreground="White" 
+                     HorizontalAlignment="Center" FontSize="15"/>
+
+                                <!--AddNode-->
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border CornerRadius="10" BorderThickness="1" BorderBrush="#FF323232"
+                          Background="#FF323232" Margin="2">
+                                        <TextBox Background="Transparent" CaretBrush="White"
+                           Foreground="White" BorderThickness="0" x:Name="vertixname"
+                           FontSize="15" Margin="2"/>
+                                    </Border>
+                                    <Button Grid.Column="1" Style="{DynamicResource Icon_btn}" Margin="2"
+                          Command="{Binding AddVertex}" CommandParameter="{Binding ElementName=vertixname}"
+                         Tag="/Assets/Plus_btn.png"
+                          />
+                                    <Button Grid.Column="2" Style="{DynamicResource Icon_btn}" Margin="2"
+                          Command="{Binding ClearVertex}" Grid.Row="1"
+                         Tag="/Assets/eraser.png"
+                          />
+                                </Grid>
+
+                                <!--ListNodes-->
+                                <ListView Grid.Row="2" BorderThickness="0,1,0,0" Background="Transparent"
+                BorderBrush="#FF323232"
+                ItemsSource="{Binding Vertices}"
+                ItemContainerStyle="{DynamicResource list_items}"
+                ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+                            </Grid>
+                        </Border>
+
+                        <Border CornerRadius="15" Background="#FF232323" Grid.Row="2" Margin="10">
+                            <!--Edges-->
+
+                            <Grid Grid.Row="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="Edges" Foreground="White" 
+                     HorizontalAlignment="Center" FontSize="15"/>
+
+                                <!--AddEdge-->
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border CornerRadius="10" BorderThickness="1" BorderBrush="#FF323232"
+                          Background="#FF323232" Margin="2">
+                                            <TextBox Background="Transparent" CaretBrush="White"
+                                   Text="{Binding EdgeFrom}" TextAlignment="Center"
+                                   Foreground="White" BorderThickness="0"
+                                   FontSize="15" Margin="2"/>
+                                        </Border>
+
+                                        <Border CornerRadius="10" BorderThickness="1" BorderBrush="#FF323232"
+                          Background="#FF323232" Margin="2" Grid.Column="1">
+                                            <TextBox Background="Transparent" CaretBrush="White"
+                           Text="{Binding EdgeTo}" TextAlignment="Center"
+                           Foreground="White" BorderThickness="0"
+                           FontSize="15" Margin="2"/>
+                                        </Border>
+                                        <Border CornerRadius="10" BorderThickness="1" BorderBrush="#FF323232"
+                          Background="#FF323232" Margin="2" Grid.Column="2">
+                                            <TextBox Background="Transparent" CaretBrush="White"
+                           Text="{Binding Weight}" TextAlignment="Center"
+                           Foreground="White" BorderThickness="0"
+                           FontSize="15" Margin="2"/>
+                                        </Border>
+                                        
+                                        <Button Grid.Column="3" Style="{DynamicResource Icon_btn}" Margin="2"
+ Command="{Binding AddEdge}"
+Tag="/Assets/Plus_btn.png"
+ />
+                                        <Button Grid.Column="5" Style="{DynamicResource Icon_btn}" Margin="2"
+ Command="{Binding ClearEdge}" Grid.Row="1"
+Tag="/Assets/eraser.png"
+ />
+                                    </Grid>
+
+                                    
+                                </Grid>
+
+                                <!--ListEdges-->
+                                <ListView Grid.Row="2" BorderThickness="0,1,0,0" Background="Transparent"
+                BorderBrush="#FF323232"
+                ItemsSource="{Binding Edges}"
+                ItemContainerStyle="{DynamicResource list_items_E}"
+                ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                        />
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+
+
+                </Border>
+
+                <Border Grid.Column="1">
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="90"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Prima-->
+                        <Border CornerRadius="15" Background="#FF232323" Margin="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Content="Prima" Foreground="White"
+         HorizontalAlignment="Center" FontSize="15"/>
+
+                                <Button Grid.Column="1" Style="{DynamicResource Icon_btn}" Margin="2"
+              Command="{Binding Prima}"
+             Tag="/Assets/network.png"
+              />
+                                <Button Grid.Column="2" Style="{DynamicResource Icon_btn}" Margin="2"
+              Command="{Binding ClearPrima}" 
+             Tag="/Assets/eraser.png"
+              />
+
+                            </Grid>
+                        </Border>
+
+
+
+                        <!--Dijkstra-->
+                        <Border CornerRadius="15" Background="#FF232323" Grid.Row="1" Margin="10">
+                            <Grid >
+
+                                <Grid Margin="0,0,0,3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Label Content="Dijkstra Algorithm" Foreground="White" Grid.ColumnSpan="4"
+HorizontalAlignment="Center" FontSize="15"/>
+                                    <Border CornerRadius="10" BorderThickness="1" BorderBrush="#FF323232"
+     Background="#FF323232" Margin="2" Grid.Row="1">
+                                        <TextBox Background="Transparent" CaretBrush="White"
+              Text="{Binding Dijkstra_From}" TextAlignment="Center" VerticalAlignment="Center"
+              Foreground="White" BorderThickness="0"
+              FontSize="15" Margin="2"/>
+                                    </Border>
+
+                                    <Border CornerRadius="10" BorderThickness="1" BorderBrush="#FF323232"
+     Background="#FF323232" Margin="2" Grid.Column="1" Grid.Row="1">
+                                        <TextBox Background="Transparent" CaretBrush="White"
+      Text="{Binding Dijkstra_To}" TextAlignment="Center" VerticalAlignment="Center"
+      Foreground="White" BorderThickness="0"
+      FontSize="15" Margin="2"/>
+                                    </Border>
+
+                                    <Button Grid.Column="2" Style="{DynamicResource Icon_btn}" Margin="2"
+     Command="{Binding Dijkstra}" Grid.Row="1"
+    Tag="/Assets/network.png"
+     />
+                                    <Button Grid.Column="3" Style="{DynamicResource Icon_btn}" Margin="2"
+     Command="{Binding ClearDijkstra}" Grid.Row="1"
+    Tag="/Assets/eraser.png"
+     />
+
+                                </Grid>
+
+
+                            </Grid>
+                        </Border>
+
+                        <!--DFS-->
+                        <Border CornerRadius="15" Background="#FF232323" Grid.Row="2" Margin="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="Depth-First Search" Foreground="White" Grid.ColumnSpan="4"
+                     HorizontalAlignment="Center" FontSize="15"/>
+
+                                <Border CornerRadius="10" BorderThickness="1" BorderBrush="#FF323232"
+                          Background="#FF323232" Margin="2" Grid.Row="1">
+                                    <TextBox Background="Transparent" CaretBrush="White"
+                                   Text="{Binding Milliseconds}" TextAlignment="Center" VerticalAlignment="Center"
+                                   Foreground="White" BorderThickness="0"
+                                   FontSize="15" Margin="2"/>
+                                </Border>
+
+                                <Button Grid.Column="1" Style="{DynamicResource Icon_btn}" Margin="2"
+                          Command="{Binding Dfs}" Grid.Row="1"
+                         Tag="/Assets/network.png"
+                          />
+
+                                <Label Content="Stack" Foreground="White" Grid.Row="2"
+                     HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15"/>
+                                <Label Content="Stack Numeric" Foreground="White" Grid.Row="2" Grid.Column="1"
+                     HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15"/>
+
+                                <Border CornerRadius="10" BorderThickness="1" BorderBrush="#FF323232"
+                          Background="#FF323232" Margin="2"  Grid.Row="3">
+                                    <ListView Grid.Row="2" BorderThickness="0,1,0,0" Background="Transparent"
+                                BorderBrush="#FF323232"
+                                ItemsSource="{Binding Stack_}"
+                                ItemContainerStyle="{DynamicResource Stack_Items}"
+                                ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+                                </Border>
+
+                                <Border CornerRadius="10" BorderThickness="1" BorderBrush="#FF323232"
+                          Background="#FF323232" Margin="2" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2">
+                                    <ListView Grid.Row="2" BorderThickness="0,1,0,0" Background="Transparent"
+                                BorderBrush="#FF323232"
+                                ItemsSource="{Binding Stack_Renumber}"
+                                ItemContainerStyle="{DynamicResource Stack_Items}"
+                                ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+                                </Border>
+
+
+                                <Button Style="{DynamicResource Icon_btn}" Margin="2"
+                          Command="{Binding Dfs_Clear}" Grid.Row="4" Grid.ColumnSpan="2"
+                         Tag="/Assets/eraser.png"
+                          />
+
+
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+                </Border>
+                
+                <Border Grid.Column="2">
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="140"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Ford-->
+                        <Border CornerRadius="15" Background="#FF232323" Margin="10">
+                            <Grid >
+
+                                <Grid Margin="0,0,0,3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Label Content="Ford–Fulkerson algorithm" Foreground="White" Grid.ColumnSpan="4"
+HorizontalAlignment="Center" FontSize="15"/>
+                                    <Border CornerRadius="10" BorderThickness="1" BorderBrush="#FF323232"
+     Background="#FF323232" Margin="2" Grid.Row="1" >
+                                        <TextBox Background="Transparent" CaretBrush="White"
+              Text="{Binding FordFrom}" TextAlignment="Center"
+              Foreground="White" BorderThickness="0"
+              FontSize="15" Margin="2"/>
+                                    </Border>
+
+                                    <Border CornerRadius="10" BorderThickness="1" BorderBrush="#FF323232"
+     Background="#FF323232" Margin="2" Grid.Column="1" Grid.Row="1">
+                                        <TextBox Background="Transparent" CaretBrush="White"
+      Text="{Binding FordTo}" TextAlignment="Center"
+      Foreground="White" BorderThickness="0"
+      FontSize="15" Margin="2"/>
+                                    </Border>
+
+                                    <Button Grid.Column="2" Style="{DynamicResource Icon_btn}" Margin="2"
+     Command="{Binding FordFulkersonAlgorithm}" Grid.Row="1"
+    Tag="/Assets/network.png"
+     />
+                                    <Button Grid.Column="3" Style="{DynamicResource Icon_btn}" Margin="2"
+     Command="{Binding ClearFord}" Grid.Row="1"
+    Tag="/Assets/eraser.png"
+     />
+
+                                    <Label Content="Max flow = " Foreground="White"
+HorizontalAlignment="Center" FontSize="15" Grid.Row="2" Grid.ColumnSpan="2"/>
+
+                                    <Border CornerRadius="10" BorderThickness="1" BorderBrush="#FF323232"
+     Background="#FF323232" Margin="2" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2">
+                                        <TextBlock Background="#FF323232" Text="{Binding MaxFlowPath}"
+      Foreground="White" TextAlignment="Center"
+      FontSize="15" Margin="2"/>
+                                    </Border>
+
+
+                                </Grid>
+
+
+                            </Grid>
+                        </Border>
+
+                       
+                        
+                        <!--BFS-->
+                        <Border CornerRadius="15" Background="#FF232323" Grid.Row="2" Margin="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="Breadth-first Search" Foreground="White" Grid.ColumnSpan="4"
+         HorizontalAlignment="Center" FontSize="15"/>
+
+                                <Border CornerRadius="10" BorderThickness="1" BorderBrush="#FF323232"
+              Background="#FF323232" Margin="2" Grid.Row="1">
+                                    <TextBox Background="Transparent" CaretBrush="White"
+                       Text="{Binding Milliseconds}" TextAlignment="Center" VerticalAlignment="Center"
+                       Foreground="White" BorderThickness="0"
+                       FontSize="15" Margin="2"/>
+                                </Border>
+
+                                <Button Style="{DynamicResource Icon_btn}" Margin="2"
+              Command="{Binding Bfs}" Grid.Row="1" Grid.Column="1"
+             Tag="/Assets/network.png"
+              />
+
+                                <Border CornerRadius="10" BorderThickness="1" BorderBrush="#FF323232"
+Background="#FF323232" Margin="2" Grid.ColumnSpan="2" Grid.Row="2" >
+                                    <ListView BorderThickness="0,1,0,0" Background="Transparent"
+      BorderBrush="#FF323232"
+      ItemsSource="{Binding Queue_}"
+      ItemContainerStyle="{DynamicResource Queue_Items}"
+      FontSize="15"
+      ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+                                </Border>
+
+                                <Button Style="{DynamicResource Icon_btn}" Margin="2"
+              Command="{Binding ClearPrima}" Grid.Row="3" Grid.ColumnSpan="2"
+             Tag="/Assets/eraser.png"
+              />
+
+                               
+
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+
+
+
+
+
+        <!--Graph-->
+        <Border  CornerRadius="15" Background="#FF232323" Margin="10">
+
+            <Canvas Margin="5" >
+
+                <ItemsControl ItemsSource="{Binding Edges}" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <Canvas>
+                                    <Line StrokeThickness="10" Stroke="{Binding ColorEdge}" StrokeEndLineCap="Triangle"
+                                          >
+                                        <Line.X1>
+                                            <MultiBinding Converter="{StaticResource CoordConvert}" ConverterParameter="X1">
+                                                <Binding Path="From.VertexX" />
+                                                <Binding Path="From" />
+                                                <Binding Path="To" />
+                                            </MultiBinding>
+                                        </Line.X1>
+                                        <Line.Y1>
+                                            <MultiBinding Converter="{StaticResource CoordConvert}" ConverterParameter="Y1">
+                                                <Binding Path="From.VertexY" />
+                                                <Binding Path="From" />
+                                                <Binding Path="To" />
+                                            </MultiBinding>
+                                        </Line.Y1>
+                                        <Line.X2>
+                                            <MultiBinding Converter="{StaticResource CoordConvert}" ConverterParameter="X2">
+                                                <Binding Path="To.VertexX" />
+                                                <Binding Path="From" />
+                                                <Binding Path="To" />
+                                            </MultiBinding>
+                                        </Line.X2>
+                                        <Line.Y2>
+                                            <MultiBinding Converter="{StaticResource CoordConvert}" ConverterParameter="Y2">
+                                                <Binding Path="To.VertexY" />
+                                                <Binding Path="From" />
+                                                <Binding Path="To" />
+                                            </MultiBinding>
+                                        </Line.Y2>
+
+                                    </Line>
+
+                                </Canvas>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+
+                <ItemsControl ItemsSource="{Binding Edges}" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <Canvas>
+                                    <Line  StrokeThickness="40"                            
+                                X1="{Binding From.VertexX}"
+                                Y1="{Binding From.VertexY}"
+                                X2="{Binding To.VertexX}"
+                                Y2="{Binding To.VertexY}">
+                                        <Line.Stroke>
+                                            <VisualBrush Stretch="None">
+                                                <VisualBrush.Visual>
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+                                                        <TextBlock Text="{Binding Capacity}" 
+                                                               Foreground="White" FontSize="15"/>
+                                                        <TextBlock Text="{Binding Flow}" 
+                                                                   Grid.Row="1"
+                                                                   Foreground="White" FontSize="15"/>
+                                                    </Grid>
+                                                </VisualBrush.Visual>
+                                            </VisualBrush>
+                                        </Line.Stroke>
+                                    </Line>
+                                </Canvas>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <ItemsControl ItemsSource="{Binding Vertices}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Canvas/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Canvas.Left" Value="{Binding VertexX,Mode=OneTime,Converter={StaticResource StartConvert}}"/>
+                            <Setter Property="Canvas.Top" Value="{Binding VertexY,Mode=OneTime,Converter = {StaticResource StartConvert}}"/>
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <Grid>
+                                    <Border Width="70" Height="70" Background="{Binding ColorVertex}"
+                                            CornerRadius="50" BorderThickness="3" BorderBrush="{Binding ColorVertexBorder}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="{Binding Id}" Foreground="Black" 
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Center"
+                                                       FontSize="18"/>
+                                            <TextBlock Foreground="Black"
+            Grid.Row="1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+     <Run Text="("/>
+     <Run>
+         <Run.Style>
+             <Style TargetType="Run">
+                 <Setter Property="Text" Value="{Binding Weight,UpdateSourceTrigger=PropertyChanged}"/>
+             <Style.Triggers>
+                 <DataTrigger Binding="{Binding Weight,UpdateSourceTrigger=PropertyChanged}"
+                                  Value="2147483647">
+                     <Setter Property="Text" Value="∞"/>
+
+                 </DataTrigger>
+             </Style.Triggers>
+         </Style>
+         </Run.Style>
+     </Run>
+     <Run Text=")"/>
+                                            </TextBlock>
+                                        </Grid>
+                                        <i:Interaction.Behaviors>
+                                            <i:MouseDragElementBehavior  
+                                                         
+                                X="{Binding VertexX, Mode=TwoWay, 
+                                UpdateSourceTrigger=PropertyChanged}" 
+                                Y="{Binding VertexY, Mode=TwoWay,
+                                UpdateSourceTrigger=PropertyChanged}">
+
+                                            </i:MouseDragElementBehavior>
+                                        </i:Interaction.Behaviors>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Canvas>
+
+        </Border>
 
     </Grid>
+
 </Window>
+
