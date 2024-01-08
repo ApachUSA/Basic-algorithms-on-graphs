@@ -32,6 +32,11 @@ Depth-first search (DFS) is one of the graph traversal methods. Depth-first sear
 - In the field you need to enter the time in milliseconds for animation
 - The result is displayed in colors and additionally the stack is displayed
 - At the end, topological sorting is applied and displayed next to it (vertex numbers change too).
+<div align="center">
+  <img src="/Screenshots/DFS.gif"/>
+  <p>DFS</p>
+  <br/>
+</div>
 
 ### Breadth-first search
 BFS (Breadth-First Search) is a graph search algorithm that explores all vertices in one level before moving to the next level. Breadth-first search, roughly speaking, is based on replacing the stack with a queue. After this modification, the earlier a vertex is visited (placed in the queue), the earlier it is used (removed from the queue).
