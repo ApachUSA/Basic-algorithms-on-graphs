@@ -1,4 +1,5 @@
-# Graph algorithms (Dijkstra, Prim's, Ford–Fulkerson, Depth-first search, Breadth-first search)
+# Graph algorithms 
+### (Dijkstra, Prim's, Ford–Fulkerson, Depth-first search, Breadth-first search)
 
 ## Introduction
 During my university studies there were several lab works related to graph algorithms. I decided to combine them into one application, as they have the same foundation.
