@@ -14,9 +14,12 @@ This work is a little more than a year old, I would probably write a much better
 ## Functions
 
 ### General
-- The function of saving the graph and restoring works. ⚠️**When saving, specify only the file name (.json will be set automatically)**.
 - Only oriented graphs are used in the application
-- ⚠️ After using the algorithm, don't forget to clean the result with the eraser next to it.
+- The function of saving the graph and restoring works
+- In the Saves folder there is a saved graph for each algorithm as an example
+- ⚠️When saving, specify only the file name (.json will be set automatically)
+- ⚠️ After using the algorithm, don't forget to clean the result with the eraser next to it
+
 ### Dijkstra
 Dijkstra's algorithm is an algorithm used to determine the shortest path from the initial node to all other nodes. 
 - The shortest path from node A to node B is marked in green.
@@ -34,6 +37,7 @@ Depth-first search (DFS) is one of the graph traversal methods. Depth-first sear
 - At the end, topological sorting is applied and displayed next to it (vertex numbers change too).
 <div align="center">
   <img src="/Screenshots/DFS.gif"/>
+   <img src="/Screenshots/DFS.png"/>
   <p>DFS</p>
   <br/>
 </div>
@@ -43,10 +47,16 @@ BFS (Breadth-First Search) is a graph search algorithm that explores all vertice
 - Only graph traversal is implemented, not search
 - In the field you need to enter the time in milliseconds for animation
 - The result is displayed in colors and additionally the queue is displayed
-  
+<div align="center">
+  <img src="/Screenshots/BFS.gif"/>
+   <img src="/Screenshots/BFS.png"/>
+  <p>BFS</p>
+  <br/>
+</div>
+
 ### Prim's
 Prima Algorithm is an algorithm for constructing the minimum spanning tree of a weighted connected undirected graph.
-*As it was said before, the system uses oriented graphs, so the algorithm checks not only the edge you created (1 -> 2), but also the reverse edge (2 -> 1)*.
+- *As it was said before, the system uses oriented graphs, so the algorithm checks not only the edge you created (1 -> 2), but also the reverse edge (2 -> 1)*.
 - The final minimum spanning tree is displayed in green color.
 <div align="center">
   <img src="/Screenshots/Prima.png"/>
