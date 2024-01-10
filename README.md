@@ -50,7 +50,7 @@ BFS (Breadth-First Search) is a graph search algorithm that explores all vertice
 - The result is displayed in colors and additionally the queue is displayed
 <div align="center">
   <img src="/Screenshots/BFS.gif"/>
-   <img src="/Screenshots/BFS.png"/>
+   <img src="/Screenshots/BFS1.png"/>
   <p>BFS</p>
   <br/>
 </div>
